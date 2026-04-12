@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G2 Vocab Game Index</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+      background: linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      color: #234;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #5a6b7b;
+    }
+
+    .info-box {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 14px 18px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 24px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px 14px;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: #234;
+      border: 2px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+      border-color: #9fd3ff;
+    }
+
+    .day {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .label {
+      font-size: 14px;
+      color: #607080;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 13px;
+      color: #6b7b88;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px 14px 36px;
+      }
+
+      .card {
+        padding: 18px 10px;
+      }
+
+      .day {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>G2 Vocab Game</h1>
+      <div class="subtitle">Day 1 〜 Day 22</div>
+    </header>
+
+    <div class="info-box">
+      いきたい Day をクリックしてください。
+    </div>
+
+    <main class="grid" id="dayGrid"></main>
+
+    <footer>
+      Fun With English
+    </footer>
+  </div>
+
+  <script>
+    // ここを変えればリンク先をまとめて調整できます。
+    // 例: "Day1.html" にしたい場合は return `Day${day}.html`; に変更
+    function getFileName(day) {
+      return `day${day}.html`;
+    }
+
+    const totalDays = 22;
+    const dayGrid = document.getElementById('dayGrid');
+
+    for (let day = 1; day <= totalDays; day++) {
+      const link = document.createElement('a');
+      link.className = 'card';
+      link.href = getFileName(day);
+      link.innerHTML = `
+        <div class="day">Day ${day}</div>
+        <div class="label">Vocabulary Game</div>
+      `;
+      dayGrid.appendChild(link);
+    }
+  </script>
+</body>
+</html>
